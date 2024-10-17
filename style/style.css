@@ -1,0 +1,86 @@
+.body {
+    font-family: unset;
+}
+.center {
+    margin: 10px auto 10px auto;
+    width: 20%;
+    text-align: center;
+}
+p {
+    font-family: arial;
+    font-size: 0.9em;
+}
+h1 {
+    font-family: arial;
+}
+.task {     
+
+    text-align: left;
+    display: flex;
+    margin: auto;
+    display: block;
+    animation-duration: 0.5s;
+    animation-name: slidein;
+}
+
+@keyframes slidein {
+    from {
+        max-height: 0px;
+        transform: scale(0);
+        opacity: 0;
+      }
+    
+      to {
+        max-height: 200px;
+        transform: scale(1);
+        opacity: 1;
+      }
+}
+.task_description {
+    display: inline-block;
+}
+.task_checkbox {
+    display: inline-block;
+    margin-right: 0.5em;
+    margin-left: 1em;
+}
+.task:nth-child(even) {
+    background-color: #edf0fe;
+}
+.task:nth-child(odd) {
+    background-color: #ffffff;
+}
+.task:first-child {
+    border-radius: 20px 20px 0px 0px;
+}
+.task:last-child {
+    border-radius: 0px 0px 20px 20px;
+}
+.task_list {
+    border-radius: 20px 20px 20px 20px;
+    border: 2px solid #edf0fe;
+    padding: 0px;
+}
+.input {
+    display: flex;
+}
+
+#button { 
+    float: center;
+    height: 40px;
+    width: 20%;
+    margin-left: 0px;
+    border-radius: 0px 20px 20px 0px;
+    border: 0px;
+}
+
+#task_name_input {
+    padding: 0px;
+    text-align: center;
+    border-radius: 20px 0px 0px 20px    ;
+    background-color: #f7ecfe;
+    height: 40px;
+    border: 0px;
+    width: 90%;
+    margin-right: 0px;
+}
