@@ -1,9 +1,10 @@
-.body {
+body {
     font-family: unset;
+    background-color: #e4efff;
 }
 .center {
     margin: 10px auto 10px auto;
-    width: 20%;
+    width: 30%;
     text-align: center;
 }
 p {
@@ -11,10 +12,12 @@ p {
     font-size: 0.9em;
 }
 h1 {
-    font-family: arial;
+    font-family: cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px;
 }
 .task {     
-
     text-align: left;
     display: flex;
     margin: auto;
@@ -45,7 +48,7 @@ h1 {
     margin-left: 1em;
 }
 .task:nth-child(even) {
-    background-color: #edf0fe;
+    background-color: #bed8ff;
 }
 .task:nth-child(odd) {
     background-color: #ffffff;
@@ -72,15 +75,27 @@ h1 {
     margin-left: 0px;
     border-radius: 0px 20px 20px 0px;
     border: 0px;
+    cursor:pointer;
+    background-color: #b0d0ff;
 }
 
 #task_name_input {
     padding: 0px;
     text-align: center;
     border-radius: 20px 0px 0px 20px    ;
-    background-color: #f7ecfe;
+    background-color: #b0d0ff;
     height: 40px;
     border: 0px;
-    width: 90%;
+    width: 65%;
     margin-right: 0px;
+}
+
+#task_date_input {
+    background-color: #b0d0ff;
+    border: none;
+}
+time {
+    float: right;
+    margin-right: 5px;
+    margin-top: 15px;
 }
