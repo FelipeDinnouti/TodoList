@@ -3,7 +3,7 @@
 }
 .center {
     margin: 10px auto 10px auto;
-    width: 20%;
+    width: 30%;
     text-align: center;
 }
 p {
@@ -14,7 +14,6 @@ h1 {
     font-family: arial;
 }
 .task {     
-
     text-align: left;
     display: flex;
     margin: auto;
@@ -72,6 +71,7 @@ h1 {
     margin-left: 0px;
     border-radius: 0px 20px 20px 0px;
     border: 0px;
+    cursor:pointer;
 }
 
 #task_name_input {
@@ -81,6 +81,16 @@ h1 {
     background-color: #f7ecfe;
     height: 40px;
     border: 0px;
-    width: 90%;
+    width: 65%;
     margin-right: 0px;
+}
+
+#task_date_input {
+    background-color: #f7ecfe;
+    border: none;
+}
+time {
+    float: right;
+    margin-right: 5px;
+    margin-top: 15px;
 }
