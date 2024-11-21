@@ -14,6 +14,29 @@ function create_task_object(text, date) {
     const p = document.createElement("p");
     const time = document.createElement("time");
 
+    //Verifica a data da tarefa
+    const hoje = new Date();
+    const dataHoje = hoje.toISOString().split('T')[0]; 
+
+    const tarefaData = date.split('T')[0]; 
+
+    if (tarefaData < dataHoje) {
+        console.log("tarefa atrasada");
+    } else if (tarefaData === dataHoje) {
+        console.log("tarefa para hoje");
+    } else {
+        console.log("tarefa dentro do prazo");
+    }
+
+    //Verificar se a tarefa está feita
+    checkbox.addEventListener('change', (event) => {
+      if (event.target.checked) {
+          console.log("Tarefa feita")
+      } else {
+          console.log("Tarefa pendente")
+      }
+    });
+
     // Mudando as propriedades para se encaixar no desejado
     checkbox.type = "checkbox";
     checkbox.className = "task_checkbox";
