@@ -1,9 +1,10 @@
-const task_list = document.getElementById("task_list");
+const task_list = document.getElementById("board0");
 const add_button = document.getElementById("button");
 const task_name_input = document.getElementById("task_name_input");
 const task_date_input = document.getElementById("task_date_input");
 
-let task_information_list = []; // Guarda o objeto abstrato da classe, nao o objeto HTML
+let boards = []; //Uma board é um conjunto de tasks
+boards.push(new Board("A Fazer"));
 
 function create_task_object(text, date) {
   if (text === "" || date === "") {
@@ -14,38 +15,22 @@ function create_task_object(text, date) {
   task_name_input.value = "";
   task_date_input.value = "";
 
-  // Criando a nova tarefa
-  const task_object = document.createElement("li");
-  const checkbox = document.createElement("input");
-  const p = document.createElement("p");
-  const time = document.createElement("time");
+  // Adiciona o elemento a lista, criando o elemento na board 0
+  task_list.appendChild(boards[0].createTask(text, date));
 
-  // Mudando as propriedades para se encaixar no desejado
-  checkbox.type = "checkbox";
-  checkbox.className = "task_checkbox";
+  //Verifica a data da tarefa
+  const hoje = new Date();
+  const dataHoje = hoje.toISOString().split('T')[0]; 
 
-  p.className = "task_description";
-  time.className = "task_date";
-  time.dateTime = date;
-  time.innerText = new Date(date).toLocaleDateString("en-US", {
-    timeZone: "UTC",
-  }); // Exibe a data formatada
-  p.innerText = text;
+  const tarefaData = date.split('T')[0]; 
 
-  task_object.className = "task";
-
-  // Append child adiciona um elemento como "filho" de outro elemento
-  // other_element.appendChild(element)
-  task_object.appendChild(checkbox);
-  task_object.appendChild(p);
-  task_object.appendChild(time);
-
-  // Adiciona o elemento a lista
-  task_list.appendChild(task_object);
-
-  // Cria o objeto abstrato
-  var task_information = new TaskInformation(text, date, false);
-  task_information_list.push(task_information);
+  if (tarefaData < dataHoje) {
+      console.log("tarefa atrasada");
+  } else if (tarefaData === dataHoje) {
+      console.log("tarefa para hoje");
+  } else {
+      console.log("tarefa dentro do prazo");
+  }
 }
 
 add_button.onclick = function () {
@@ -57,15 +42,15 @@ add_button.onclick = function () {
 // Logo antes de fechar a janela, salvar os dados
 window.addEventListener("beforeunload", function (e) {
   localStorage.setItem(
-    "TaskInformationList",
-    JSON.stringify(task_information_list),
+    "Boards",
+    JSON.stringify(boards),
   );
 });
 
 // Assim que abrir a janela
 window.addEventListener("load", function (e) {
   // lê uma lista de tasks salvas como uma string JSON e converte ela em Array
-  let task_list = JSON.parse(localStorage.getItem("TaskInformationList"));
+  let task_list = JSON.parse(localStorage.getItem("Boards"));
 
   // Itera por cada task salva e cria ela
   for (let i = 0; i < task_list.length; i++) {

@@ -1,7 +1,7 @@
 class TaskInformation {
-  constructor(description, date, completed) {
+  constructor(description, date) {
     this.description = description;
     this.date = date;
-    this.completed = completed;
+    this.completed = false;
   }
 }

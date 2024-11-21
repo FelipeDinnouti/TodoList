@@ -12,30 +12,26 @@
 <body>
     <div class="center">
         <h1>To do list</h1>
-        <button class="bx bxs-trash alt"></button>
         <br />
         <div class="input">
-            <input type="text" id="task_name_input" />
+            <input type="text" id="task_name_input"/>
             <input type="date" id="task_date_input" placeholder="09092008" />
             <button type="button" id="button">+</button>
         </div>
-        <ul class="task_list" id="task_list">
+        <ul class="board" id="board0">
             <li class="task">
                 <input type="checkbox" class="task_checkbox" />
                 <p class="task_description">Descrição Daora</p>
+                <button class="bx bxs-trash alt" id="delete_task"></button>
                 <time datetime="task_date_input" class="task_date">27/11/2024</time>
-                <button class="bx bxs-trash alt"></button>
-            </li>
-            <li class="task">
-                <input type="checkbox" class="task_checkbox" />
-                <p class="task_description">Descrição Daora2</p>
-                <time datetime="task_date_input" class="task_date">27/11/2024</time>
-                <button class="bx bxs-trash alt"></button>
             </li>
         </ul>
     </div>
+    
     <script src="main/task_information.js"></script>
+    <script src="main/board.js"></script>
     <script src="main/index.js"></script>
+
 </body>
 
 </html>
