@@ -1,12 +1,12 @@
 @font-face {
     font-family: "HostGrotesk-Medium";
     src: url("/home/falkun/Remote/TodoList/assets/fonts/Host_Grotesk/static/HostGrotesk-Medium.ttf");
-        format("truetype");
+        format:("truetype");
 }
 @font-face {
     font-family: "HostGrotesk-Light";
     src: url("/home/falkun/Remote/TodoList/assets/fonts/Host_Grotesk/static/HostGrotesk-Medium.ttf");
-        format("truetype");
+        format:("truetype");
 }
 
 body {
@@ -17,6 +17,19 @@ body {
     width: 30%;
     text-align: center;
 }
+
+.center button {
+    margin-left: 450px;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+.task button {
+    margin-left: 450px;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
 p {
     font-family: arial;
     font-size: 0.9em;
@@ -67,6 +80,7 @@ h1 {
 }
 
 .task {
+    
     padding-right: 1em;
     padding-left: 1em;
 }
