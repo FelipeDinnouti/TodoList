@@ -1,0 +1,107 @@
+@keyframes slidein {
+    from {
+        max-height: 0px;
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    to {
+        max-height: 200px;
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.task {
+    text-align: left;
+    display: flex;
+    margin: auto;
+    display: block;
+    animation-duration: 0.5s;
+    animation-name: slidein;
+
+    transform: scale(1);
+    transition: transform 0.5s ease-in-out;
+}
+
+.task:hover {
+    transform: scale(1.035);
+    transition: transform 0.2s ease-in-out;
+}
+
+.task_description {
+    display: inline-block;
+    font-family: "HostGrotesk-Light";
+}
+.task_checkbox {
+    display: inline-block;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+}
+
+.task {
+    border-radius: 10px;
+
+    margin-bottom: 10px;
+    padding-right: 1em;
+    padding-left: 1em;
+}
+.task:nth-child(even) {
+    background-color: #bed8ff;
+}
+.task:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Delete task button */
+#delete_task { 
+    float: right;
+    display: block;
+    margin: 15px 0px 15px 1em;
+    border: 0px;
+    background-color: transparent;
+}
+
+.task_list {
+    border-radius: 10px 10px 10px 10px;
+    padding: 0px;
+}
+
+/* ---- Task Input ----*/
+
+
+.input {
+    display: flex;
+}
+
+.task_button {
+    float: center;
+    height: 40px;
+    width: 20%;
+    margin-left: 0px;
+    border-radius: 0px 10px 10px 0px;
+    border: 0px;
+    cursor: pointer;
+    background-color: #c7d5f0;
+}
+.task_name_input {
+    padding: 0px;
+    text-align: center;
+    border-radius: 10px 0px 0px 10px;
+    background-color: #c7d5f0;
+    height: 40px;
+    border: 0px;
+    width: 65%;
+    margin-right: 0px;
+}
+
+.task_date_input {
+    background-color: #c7d5f0;
+    border: none;
+}
+
+time {
+    font-family: "HostGrotesk-Medium";
+    float: right;
+    margin-top: 15px;
+}

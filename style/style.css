@@ -9,134 +9,26 @@
         format:("truetype");
 }
 
-body {
-    background-color: #e4efff;
+:root {
+    --primary-color: #bed8ff;
+    --background-color:  #e4efff;
 }
+
+body {
+    background-color: var(--background-color);
+}
+
 .center {
     margin: 10px auto 10px auto;
-    width: 30%;
+    width: 80%;
     text-align: center;
 }
 
-.center button {
-    margin-left: 450px;
-    font-size: 1em;
-    border-radius: 5px;
-}
-
-p {
-    font-family: arial;
-    font-size: 0.9em;
-}
 h1 {
     font-family: "HostGrotesk-Medium";
     font-weight: 400;
     font-style: normal;
     font-size: 50px;
 }
-.task {
-    text-align: left;
-    display: flex;
-    margin: auto;
-    display: block;
-    animation-duration: 0.5s;
-    animation-name: slidein;
 
-    transform: scale(1);
-    transition: transform 0.5s ease-in-out;
-}
 
-.task:hover {
-    transform: scale(1.1);
-    transition: transform 0.5s ease-in-out;
-}
-
-@keyframes slidein {
-    from {
-        max-height: 0px;
-        transform: scale(0);
-        opacity: 0;
-    }
-
-    to {
-        max-height: 200px;
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-.task_description {
-    display: inline-block;
-    font-family: "HostGrotesk-Light";
-}
-.task_checkbox {
-    display: inline-block;
-    margin-right: 0.5em;
-    margin-left: 0.5em;
-}
-
-.task {
-    
-    padding-right: 1em;
-    padding-left: 1em;
-}
-.task:nth-child(even) {
-    background-color: #bed8ff;
-}
-.task:nth-child(odd) {
-    background-color: #ffffff;
-}
-.task:first-child {
-    border-radius: 20px 20px 0px 0px;
-}
-.task:last-child {
-    border-radius: 0px 0px 20px 20px;
-}
-
-#delete_task { 
-    float: right;
-    display: block;
-    margin: 15px 0px 15px 1em;
-    border: 0px;
-    background-color: transparent;
-}
-
-.board {
-    border-radius: 20px 20px 20px 20px;
-    border: 2px solid #edf0fe;
-    padding: 0px;
-}
-.input {
-    display: flex;
-}
-
-#button {
-    float: center;
-    height: 40px;
-    width: 20%;
-    margin-left: 0px;
-    border-radius: 0px 20px 20px 0px;
-    border: 0px;
-    cursor: pointer;
-    background-color: #b0d0ff;
-}
-
-#task_name_input {
-    padding: 0px;
-    text-align: center;
-    border-radius: 20px 0px 0px 20px;
-    background-color: #b0d0ff;
-    height: 40px;
-    border: 0px;
-    width: 65%;
-    margin-right: 0px;
-}
-
-#task_date_input {
-    background-color: #b0d0ff;
-    border: none;
-}
-time {
-    font-family: "HostGrotesk-Medium";
-    float: right;
-    margin-top: 15px;
-}

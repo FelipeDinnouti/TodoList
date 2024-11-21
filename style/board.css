@@ -1,0 +1,16 @@
+
+.board {
+    float: left;
+    margin: 0px 30px 0px 0px;
+
+    background-color: #dfe1f5;
+    padding: 10px;
+    border-radius: 20px;
+    width: 400px;
+}
+.board_title {
+    font-family: "HostGrotesk-Medium";
+    text-align: left;
+    font-size: 1.6em;
+    margin: 15px 0px 0px 10px;
+}

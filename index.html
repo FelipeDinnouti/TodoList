@@ -1,37 +1,24 @@
 <!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style/tasks.css"/>
+        <link rel="stylesheet" href="style/board.css" />
+        <link rel="stylesheet" href="style/style.css" />
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+        <title>To Do List</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style/style.css" />
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>To Do List</title>
-</head>
-
-<body>
-    <div class="center">
-        <h1>To do list</h1>
-        <br />
-        <div class="input">
-            <input type="text" id="task_name_input"/>
-            <input type="date" id="task_date_input" placeholder="09092008" />
-            <button type="button" id="button">+</button>
+    <body>
+        <div class="center" id="board_list">
+            <h1>To do list</h1>
+            <br/>
+            
         </div>
-        <ul class="board" id="board0">
-            <li class="task">
-                <input type="checkbox" class="task_checkbox" />
-                <p class="task_description">Descrição Daora</p>
-                <button class="bx bxs-trash alt" id="delete_task"></button>
-                <time datetime="task_date_input" class="task_date">27/11/2024</time>
-            </li>
-        </ul>
-    </div>
-    
-    <script src="main/task_information.js"></script>
-    <script src="main/board.js"></script>
-    <script src="main/index.js"></script>
 
-</body>
-
+        <script src="main/task_information.js"></script>
+        <script src="main/board.js"></script>
+        <script src="main/index.js"></script>
+    </body>
 </html>
