@@ -41,6 +41,7 @@ class Board {
         const p = document.createElement("p");
         const time = document.createElement("time");
         const button = document.createElement("button");
+        const delete_task = document.createElement("delete_task");
 
         // Mudando as propriedades para se encaixar no desejado
         checkbox.type = "checkbox";
@@ -67,7 +68,7 @@ class Board {
         task_object.appendChild(button);
         task_object.appendChild(time);
 
-         //Verificar se a tarefa está feita
+         //Verificar se a tarefa estÃ¡ feita
         checkbox.addEventListener('change', this.checkboxChange);
 
         task_list.appendChild(task_object); // Retorna a tarefa completa

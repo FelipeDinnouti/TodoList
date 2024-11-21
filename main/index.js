@@ -14,6 +14,11 @@ var doing_board = new Board("Fazendo", 1);
 boards.push(doing_board);
 board_list.appendChild(doing_board.createBoardElement());
 
+var done_board = new Board("Feito", 2);
+
+boards.push(done_board);
+board_list.appendChild(done_board.createBoardElement());
+
 
 // Completando tasks
 const checkboxes = document.querySelectorAll(".task_checkbox");
