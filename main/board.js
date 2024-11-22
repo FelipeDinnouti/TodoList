@@ -56,8 +56,11 @@ class Board {
 
         p.className = "task_description";
         p.innerText = description;
-        
+
         late.className = "atrasado";
+        ontime.className = "para_hoje";
+        later.className = "no_prazo";
+
 
         time.className = "task_date";
         time.dateTime = date;
@@ -65,6 +68,30 @@ class Board {
             timeZone: "UTC",
         }); // Exibe a data formatada
 
+
+        //Verificar se a tarefa estão feita
+
+        checkbox.addEventListener('change', function (ev) {
+            function getElementClassName(parent, target) {
+                for (var i = 0; i < parent.childNodes.length; i++) {
+                    if (parent.childNodes[i].className === target) {
+                        return parent.childNodes[i]
+                    }
+                }
+            }
+
+            let parent = ev.currentTarget.parentElement;
+            let task_description = getElementClassName(parent, "task_description");
+
+            if (ev.currentTarget.checked) {
+                task_description.id = "strikethrough"
+            } else {
+                task_description.id = ""
+            }
+        });
+
+
+        
         delete_task.className = "bx bxs-trash alt";
         delete_task.id = "delete_task";
 
@@ -83,24 +110,24 @@ class Board {
         task_object.appendChild(time);
 
         const hoje = new Date();
-        const dataHoje = hoje.toISOString().split('T')[0]; 
+        const dataHoje = hoje.toISOString().split('T')[0];
 
-        const tarefaData = date.split('T')[0]; 
+        const tarefaData = date.split('T')[0];
 
         if (tarefaData < dataHoje) {
             console.log("tarefa atrasada");
-            late.innerText ="Atrasado";
+            late.innerText = "Atrasado";
             task_object.appendChild(late);
         } else if (tarefaData === dataHoje) {
             console.log("tarefa para hoje");
-            ontime.innerText ="Para hoje";
+            ontime.innerText = "Para hoje";
             task_object.appendChild(ontime);
         } else {
             console.log("tarefa dentro do prazo");
-            later.innerText ="No prazo";
+            later.innerText = "No prazo";
             task_object.appendChild(later);
         }
-        
+
         // Adicionando a nova tarefa à lista
         task_list.appendChild(task_object);
         self.task_list.push({
