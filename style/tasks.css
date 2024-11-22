@@ -43,6 +43,7 @@
     border-radius: 10px;
     margin-bottom: 10px;
     padding-right: 1em;
+    padding-bottom: 1em;
     padding-left: 1em;
 }
 .task:nth-child(even) {
@@ -112,4 +113,19 @@ time {
     text-decoration: line-through;
     font-style: italic;
     color: #adadad;
+}
+
+.atrasado {
+    margin-left: 16em;
+    color: rgb(255, 0, 0);
+}
+
+.para_hoje {
+    margin-left: 16em;
+    color: #ffd000;
+}
+
+.no_prazo {
+    margin-left: 16em;
+    color: green;
 }
