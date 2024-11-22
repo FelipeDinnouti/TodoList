@@ -10,8 +10,22 @@ class Board {
     }
 
     checkboxChange(event) {
-        if (event.target.checked) {
-            console.log("Tarefa feita")
+        function getElementClassName(parent, target) {
+            for (var i = 0; i < parent.childNodes.length; i++) {
+                if (parent.childNodes[i].className === target) {
+                    return parent.childNodes[i]
+                }        
+            }
+        } 
+        
+        let parent = event.currentTarget.parentElement;
+        let task_description = getElementClassName(parent, "task_description");
+
+        if (event.currentTarget.checked) {
+            console.log("receba")
+            task_description.style.fontStyle = "italic";
+            task_description.description = task_description.innerText;
+            task_description.innerHtml = `<s>${task_description.description}</s>`
         } else {
             console.log("Tarefa pendente")
         }
@@ -61,6 +75,7 @@ class Board {
 
         p.className = "task_description";
         p.innerText = description;
+        p.description = description
 
         time.className = "task_date";
         time.dateTime = date;
@@ -81,8 +96,25 @@ class Board {
         task_object.appendChild(time);
 
          //Verificar se a tarefa estão feita
-        checkbox.addEventListener('change', this.checkboxChange);
-
+        checkbox.addEventListener('change', function(ev) {
+            function getElementClassName(parent, target) {
+                for (var i = 0; i < parent.childNodes.length; i++) {
+                    if (parent.childNodes[i].className === target) {
+                        return parent.childNodes[i]
+                    }        
+                }
+            } 
+            
+            let parent = ev.currentTarget.parentElement;
+            let task_description = getElementClassName(parent, "task_description");
+    
+            if (ev.currentTarget.checked) {
+                task_description.id = "strikethrough"
+            } else {
+                task_description.id = ""
+            }
+        });
+        
         task_list.appendChild(task_object); // Retorna a tarefa completa
         self.task_list.push(new TaskInformation());
 

@@ -104,3 +104,11 @@ time {
     float: right;
     margin-top: 15px;
 }
+
+#strikethrough {
+    display: inline-block;
+    font-family: "HostGrotesk-Light";
+    text-decoration: line-through;
+    font-style: italic;
+    color: #adadad;
+}
