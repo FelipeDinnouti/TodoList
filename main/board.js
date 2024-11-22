@@ -17,12 +17,24 @@ class Board {
         }
     }
 
-    createTaskElement(add_to_list = true) {
-        const board_object = document.getElementById(`board${self.index}`);
-        const task_list = board_object.getElementsByClassName("task_list")[0];
+    createTaskElement(evt) {
+        let index = evt.currentTarget.board_index;
 
-        let task_name_input = board_object.getElementsByClassName("task_name_input")[0];
-        let task_date_input = board_object.getElementsByClassName("task_date_input")[0];
+
+        function getElementClassName(parent, target) {
+            for (var i = 0; i < parent.childNodes.length; i++) {
+                if (parent.childNodes[i].className === target) {
+                    return parent.childNodes[i]
+                }        
+            }
+        } 
+
+        const board_object = document.getElementById(`board${index}`);
+        const task_list = getElementClassName(board_object, "task_list")
+
+        let input = getElementClassName(board_object, "input")
+        let task_name_input = getElementClassName(input, "task_name_input");
+        let task_date_input = getElementClassName(input, "task_date_input");
 
         let description = task_name_input.value;
         let date = task_date_input.value;
@@ -68,7 +80,7 @@ class Board {
         task_object.appendChild(button);
         task_object.appendChild(time);
 
-         //Verificar se a tarefa estÃ¡ feita
+         //Verificar se a tarefa estão feita
         checkbox.addEventListener('change', this.checkboxChange);
 
         task_list.appendChild(task_object); // Retorna a tarefa completa
@@ -126,7 +138,9 @@ class Board {
         input.appendChild(date_input);
         input.appendChild(button);
 
-        button.addEventListener("click", this.createTaskElement);
+        button.addEventListener("click", this.createTaskElement, false);
+        button.board_index = self.index
+        console.log(`setting event listener: ${self.index}`)
 
         return board_object;
     }
