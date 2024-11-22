@@ -32,11 +32,13 @@
 .task_description {
     display: inline-block;
     font-family: "HostGrotesk-Light";
+    margin-bottom: 0px;
 }
 .task_checkbox {
     display: inline-block;
     margin-right: 0.5em;
     margin-left: 0.5em;
+    padding-bottom: 10px;
 }
 
 .task {
@@ -44,6 +46,8 @@
     margin-bottom: 10px;
     padding-right: 1em;
     padding-left: 1em;
+
+    padding-bottom: 0.01em;
 }
 .task:nth-child(even) {
     background-color: #bed8ff;
@@ -112,4 +116,27 @@ time {
     text-decoration: line-through;
     font-style: italic;
     color: #adadad;
+}
+
+/* Tags */
+
+.tag_late {
+    margin: 0px 10px 0px auto;
+    background-color: #f1514f;
+    border-color: #ca2e32;
+
+    font-size: 0.6em;
+    padding: 5px;
+    width: 100px;
+
+    border-radius: 5px;
+    border: 1px;
+}
+
+.tag_ontime {
+    padding: 10px;
+}
+
+.tag_duetoday {
+    padding: 10px;
 }
