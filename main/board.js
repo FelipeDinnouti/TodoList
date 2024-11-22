@@ -1,52 +1,29 @@
 class Board {
     constructor(title, index) {
-        self.title = title
-        self.task_list = []
-        self.index = index
+        self.title = title;
+        self.task_list = [];
+        self.index = index;
     }
 
     getAsElement() {
-        return document.getElementById("board"+Number.toString(index));
-    }
-
-    checkboxChange(event) {
-        function getElementClassName(parent, target) {
-            for (var i = 0; i < parent.childNodes.length; i++) {
-                if (parent.childNodes[i].className === target) {
-                    return parent.childNodes[i]
-                }        
-            }
-        } 
-        
-        let parent = event.currentTarget.parentElement;
-        let task_description = getElementClassName(parent, "task_description");
-
-        if (event.currentTarget.checked) {
-            console.log("receba")
-            task_description.style.fontStyle = "italic";
-            task_description.description = task_description.innerText;
-            task_description.innerHtml = `<s>${task_description.description}</s>`
-        } else {
-            console.log("Tarefa pendente")
-        }
+        return document.getElementById("board" + Number.toString(index));
     }
 
     createTaskElement(evt) {
         let index = evt.currentTarget.board_index;
 
-
         function getElementClassName(parent, target) {
-            for (var i = 0; i < parent.childNodes.length; i++) {
+            for (let i = 0; i < parent.childNodes.length; i++) {
                 if (parent.childNodes[i].className === target) {
-                    return parent.childNodes[i]
-                }        
+                    return parent.childNodes[i];
+                }
             }
-        } 
+        }
 
         const board_object = document.getElementById(`board${index}`);
-        const task_list = getElementClassName(board_object, "task_list")
+        const task_list = getElementClassName(board_object, "task_list");
 
-        let input = getElementClassName(board_object, "input")
+        let input = getElementClassName(board_object, "input");
         let task_name_input = getElementClassName(input, "task_name_input");
         let task_date_input = getElementClassName(input, "task_date_input");
 
@@ -66,16 +43,21 @@ class Board {
         const checkbox = document.createElement("input");
         const p = document.createElement("p");
         const time = document.createElement("time");
-        const button = document.createElement("button");
-        const delete_task = document.createElement("delete_task");
+        const delete_task = document.createElement("button");
+        const late = document.createElement("div");
+        const ontime = document.createElement("div");
+        const later = document.createElement("div");
 
-        // Mudando as propriedades para se encaixar no desejado
+        // Configurando os elementos
+        task_object.className = "task";
+
         checkbox.type = "checkbox";
         checkbox.className = "task_checkbox";
 
         p.className = "task_description";
         p.innerText = description;
-        p.description = description
+        
+        late.className = "atrasado";
 
         time.className = "task_date";
         time.dateTime = date;
@@ -83,44 +65,23 @@ class Board {
             timeZone: "UTC",
         }); // Exibe a data formatada
 
-        button.className = "bx bxs-trash alt";
-        button.id = "delete_task";
+        delete_task.className = "bx bxs-trash alt";
+        delete_task.id = "delete_task";
 
-        task_object.className = "task";
+        // Evento de exclusão
+        delete_task.addEventListener("click", () => {
+            task_object.remove(); // Remove a tarefa do DOM
+            console.log("Tarefa deletada!");
+        });
 
-        // Append child adiciona um elemento como "filho" de outro elemento
-        // other_element.appendChild(element)
+
+
+        // Montando a estrutura HTML
         task_object.appendChild(checkbox);
         task_object.appendChild(p);
-        task_object.appendChild(button);
+        task_object.appendChild(delete_task);
         task_object.appendChild(time);
 
-         //Verificar se a tarefa estão feita
-        checkbox.addEventListener('change', function(ev) {
-            //NÃO TIRA ESSA FUNÇÂO DAQUI, só funciona aqui aparentemente
-            function getElementClassName(parent, target) {
-                for (var i = 0; i < parent.childNodes.length; i++) {
-                    if (parent.childNodes[i].className === target) {
-                        return parent.childNodes[i]
-                    }        
-                }
-            } 
-            
-            let parent = ev.currentTarget.parentElement;
-            let task_description = getElementClassName(parent, "task_description");
-    
-            if (ev.currentTarget.checked) {
-                //Muda o id pra mudar o estilo
-                task_description.id = "strikethrough"
-            } else {
-                task_description.id = ""
-            }
-        });
-        
-        task_list.appendChild(task_object); // Retorna a tarefa completa
-        self.task_list.push(new TaskInformation());
-
-         //Verifica a data da tarefa
         const hoje = new Date();
         const dataHoje = hoje.toISOString().split('T')[0]; 
 
@@ -128,26 +89,42 @@ class Board {
 
         if (tarefaData < dataHoje) {
             console.log("tarefa atrasada");
+            late.innerText ="Atrasado";
+            task_object.appendChild(late);
         } else if (tarefaData === dataHoje) {
             console.log("tarefa para hoje");
+            ontime.innerText ="Para hoje";
+            task_object.appendChild(ontime);
         } else {
             console.log("tarefa dentro do prazo");
+            later.innerText ="No prazo";
+            task_object.appendChild(later);
         }
+        
+        // Adicionando a nova tarefa à lista
+        task_list.appendChild(task_object);
+        self.task_list.push({
+            description,
+            date,
+        });
+
+        console.log("Nova tarefa criada:", description, date);
+
     }
 
     createBoardElement() {
         const board_object = document.createElement("div");
         const board_title = document.createElement("p");
         const task_list = document.createElement("ul");
-        
+
         const input = document.createElement("div");
         const text_input = document.createElement("input");
         const date_input = document.createElement("input");
         const button = document.createElement("button");
 
         board_object.className = "board";
-        board_object.id = `board${self.index}`
-        
+        board_object.id = `board${self.index}`;
+
         board_title.className = "board_title";
         board_title.innerText = self.title;
 
@@ -160,7 +137,6 @@ class Board {
 
         date_input.type = "date";
         date_input.className = "task_date_input";
-        date_input.placeholder = "09092008";
 
         button.className = "task_button";
         button.innerText = "+";
@@ -173,8 +149,7 @@ class Board {
         input.appendChild(button);
 
         button.addEventListener("click", this.createTaskElement, false);
-        button.board_index = self.index
-        console.log(`setting event listener: ${self.index}`)
+        button.board_index = self.index;
 
         return board_object;
     }
