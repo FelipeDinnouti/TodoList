@@ -97,6 +97,7 @@ class Board {
 
          //Verificar se a tarefa estão feita
         checkbox.addEventListener('change', function(ev) {
+            //NÃO TIRA ESSA FUNÇÂO DAQUI, só funciona aqui aparentemente
             function getElementClassName(parent, target) {
                 for (var i = 0; i < parent.childNodes.length; i++) {
                     if (parent.childNodes[i].className === target) {
@@ -109,6 +110,7 @@ class Board {
             let task_description = getElementClassName(parent, "task_description");
     
             if (ev.currentTarget.checked) {
+                //Muda o id pra mudar o estilo
                 task_description.id = "strikethrough"
             } else {
                 task_description.id = ""
