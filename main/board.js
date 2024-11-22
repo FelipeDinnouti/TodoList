@@ -44,6 +44,9 @@ class Board {
         const p = document.createElement("p");
         const time = document.createElement("time");
         const delete_task = document.createElement("button");
+        const late = document.createElement("div");
+        const ontime = document.createElement("div");
+        const later = document.createElement("div");
 
         // Configurando os elementos
         task_object.className = "task";
@@ -53,6 +56,8 @@ class Board {
 
         p.className = "task_description";
         p.innerText = description;
+        
+        late.className = "atrasado";
 
         time.className = "task_date";
         time.dateTime = date;
@@ -69,12 +74,33 @@ class Board {
             console.log("Tarefa deletada!");
         });
 
+
+
         // Montando a estrutura HTML
         task_object.appendChild(checkbox);
         task_object.appendChild(p);
         task_object.appendChild(delete_task);
         task_object.appendChild(time);
 
+        const hoje = new Date();
+        const dataHoje = hoje.toISOString().split('T')[0]; 
+
+        const tarefaData = date.split('T')[0]; 
+
+        if (tarefaData < dataHoje) {
+            console.log("tarefa atrasada");
+            late.innerText ="Atrasado";
+            task_object.appendChild(late);
+        } else if (tarefaData === dataHoje) {
+            console.log("tarefa para hoje");
+            ontime.innerText ="Para hoje";
+            task_object.appendChild(ontime);
+        } else {
+            console.log("tarefa dentro do prazo");
+            later.innerText ="No prazo";
+            task_object.appendChild(later);
+        }
+        
         // Adicionando a nova tarefa à lista
         task_list.appendChild(task_object);
         self.task_list.push({
@@ -83,6 +109,7 @@ class Board {
         });
 
         console.log("Nova tarefa criada:", description, date);
+
     }
 
     createBoardElement() {
