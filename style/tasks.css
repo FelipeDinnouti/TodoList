@@ -45,10 +45,8 @@
     border-radius: 10px;
     margin-bottom: 10px;
     padding-right: 1em;
-    padding-bottom: 1em;
+    padding-bottom: 0.8em;
     padding-left: 1em;
-
-    padding-bottom: 0.01em;
 }
 .task:nth-child(even) {
     background-color: #bed8ff;
@@ -122,22 +120,42 @@ time {
 /* Tags */
 
 .tag_late {
-    margin: 0px 10px 0px auto;
+    margin: 5px 10px 0px auto;
     background-color: #f1514f;
     border-color: #ca2e32;
 
-    font-size: 0.6em;
-    padding: 5px;
+    font-size: 0.85em;
+    text-align: center;
+    padding: 5px 1em 5px 1em;    
+    width: 100px;
+    border-radius: 5px;
+    border: 1px;
+}
+
+.tag_ontime {
+    margin: 5px 10px 0px auto;
+    background-color: #78fa67;
+    border-color: #68ec57;
+
+    font-size: 0.85em;
+    text-align: center;
+    padding: 5px 1em 5px 1em;
     width: 100px;
 
     border-radius: 5px;
     border: 1px;
 }
 
-.tag_ontime {
-    padding: 10px;
-}
-
 .tag_duetoday {
-    padding: 10px;
+    margin: 5px 10px 0px auto;
+    background-color: #e6f14f;
+    border-color: #d8e244;
+
+    font-size: 0.85em;
+    text-align: center;
+    padding: 5px 1em 5px 1em;
+    width: 100px;
+
+    border-radius: 5px;
+    border: 1px;
 }
