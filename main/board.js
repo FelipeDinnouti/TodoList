@@ -26,17 +26,21 @@ class Board {
         let input = getElementClassName(board_object, "input");
         let task_name_input = getElementClassName(input, "task_name_input");
         let task_date_input = getElementClassName(input, "task_date_input");
+        let task_information_input = getElementClassName(input, "task_information_input");
+
 
         let description = task_name_input.value;
         let date = task_date_input.value;
+        let information = task_information_input.value;
 
-        if (description === "" || date === "") {
-            return; // Não cria se a descrição ou a data estiverem vazias
+        if (description === "" || date === "" || information === "") {
+            return; // Não cria se o título, a data, ou a descrição estiverem vazios
         }
 
         // Reseta o input
         task_name_input.value = "";
         task_date_input.value = "";
+        task_information_input.value = "";
 
         // Criando a nova tarefa em HTML
         const task_object = document.createElement("li");
@@ -44,7 +48,8 @@ class Board {
         const p = document.createElement("p");
         const time = document.createElement("time");
         const delete_task = document.createElement("button");
-        
+
+        const information_task = document.createElement("p");
         const time_tag = document.createElement("div");
 
         // Configurando os elementos
@@ -55,6 +60,10 @@ class Board {
 
         p.className = "task_description";
         p.innerText = description;
+
+        information_task.type = "text";
+        information_task.innerText = information;
+        information_task.className = "information_task";
         
 
         time.className = "task_date";
@@ -103,6 +112,7 @@ class Board {
         task_object.appendChild(p);
         task_object.appendChild(delete_task);
         task_object.appendChild(time);
+        task_object.appendChild(information_task);
 
         const hoje = new Date();
         const dataHoje = hoje.toISOString().split('T')[0];
@@ -131,9 +141,10 @@ class Board {
         self.task_list.push({
             description,
             date,
+            information,
         });
 
-        console.log("Nova tarefa criada:", description, date);
+        console.log("Nova tarefa criada:", description, date, information);
 
     }
 
@@ -143,9 +154,10 @@ class Board {
         const task_list = document.createElement("ul");
 
         const input = document.createElement("div");
-        const text_input = document.createElement("input");
+        const text_input = document.createElement("input");  //Título da task
         const date_input = document.createElement("input");
         const button = document.createElement("button");
+        const information_input = document.createElement("input");  //Descrição da task
 
         board_object.className = "board";
         board_object.id = `board${self.index}`;
@@ -166,12 +178,16 @@ class Board {
         button.className = "task_button";
         button.innerText = "+";
 
+        information_input.type = "text";
+        information_input.className = "task_information_input";
+
         board_object.appendChild(board_title);
         board_object.appendChild(task_list);
         board_object.appendChild(input);
         input.appendChild(text_input);
         input.appendChild(date_input);
         input.appendChild(button);
+        input.appendChild(information_input);
 
         button.addEventListener("click", this.createTaskElement, false);
         button.board_index = self.index;
