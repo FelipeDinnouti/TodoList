@@ -34,7 +34,7 @@ class Board {
         let information = task_information_input.value;
 
         if (description === "" || date === "" || information === "") {
-            return; // Não cria se o título, a data, ou a descrição estiverem vazios
+            return alert("Por favor insira todos os campos!"); // Não cria se o título, a data, ou a descrição estiverem vazios
         }
 
         // Reseta o input
@@ -103,6 +103,7 @@ class Board {
         delete_task.addEventListener("click", () => {
             task_object.remove(); // Remove a tarefa do DOM
             console.log("Tarefa deletada!");
+            alert("Exclusão de tarefa concluída!");
         });
 
 
@@ -145,6 +146,7 @@ class Board {
         });
 
         console.log("Nova tarefa criada:", description, date, information);
+        alert("Nova tarefa adicionada com sucesso!");
 
     }
 
@@ -170,15 +172,21 @@ class Board {
         input.className = "input";
 
         text_input.type = "text";
+        text_input.placeholder = "Título...";
+        text_input.title = "Campo para inserir o nome da tarefa";
         text_input.className = "task_name_input";
 
         date_input.type = "date";
+        date_input.title = "Data final para realização da tarefa.";
         date_input.className = "task_date_input";
 
         button.className = "task_button";
+        button.title = "Adiciona a tarefa.";
         button.innerText = "+";
 
         information_input.type = "text";
+        information_input.title = "Campo para inserir uma descrição para a tarefa.";
+        information_input.placeholder = "Descrição da tarefa..."
         information_input.className = "task_information_input";
 
         board_object.appendChild(board_title);

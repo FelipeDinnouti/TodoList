@@ -34,11 +34,17 @@
     font-family: "HostGrotesk-Light";
     margin-bottom: 0px;
 }
+
 .task_checkbox {
     display: inline-block;
     margin-right: 0.5em;
     margin-left: 0.5em;
     padding-bottom: 10px;
+}
+
+.information_task {
+    font-family: "HostGrotesk-Light";
+    padding-left: 8px;
 }
 
 .task {
@@ -48,15 +54,17 @@
     padding-bottom: 0.8em;
     padding-left: 1em;
 }
+
 .task:nth-child(even) {
     background-color: #bed8ff;
 }
+
 .task:nth-child(odd) {
     background-color: #ffffff;
 }
 
 /* Delete task button */
-#delete_task { 
+#delete_task {
     float: right;
     display: block;
     margin: 15px 0px 15px 1em;
@@ -87,9 +95,12 @@
     cursor: pointer;
     background-color: #c7d5f0;
 }
+
 .task_name_input {
     padding: 0px;
-    text-align: center;
+    padding-left: 25px;
+    text-align: left;
+    font-family: "HostGrotesk-Light";
     border-radius: 10px 0px 0px 10px;
     background-color: #c7d5f0;
     height: 40px;
@@ -100,7 +111,18 @@
 
 .task_date_input {
     background-color: #c7d5f0;
+    font-family: "HostGrotesk-Light";
     border: none;
+    height: 40px;
+}
+
+.task_information_input {
+    background-color: #c7d5f0;
+    color: #c7d5f0;
+    border: none;
+    border-radius: 10px 0px 0px 10px;
+    font-family: "HostGrotesk-Light";
+    height: 40px;
 }
 
 time {
@@ -123,10 +145,10 @@ time {
     margin: 5px 10px 0px auto;
     background-color: #f1514f;
     border-color: #ca2e32;
-
+    font-family: "HostGrotesk-Light";
     font-size: 0.85em;
     text-align: center;
-    padding: 5px 1em 5px 1em;    
+    padding: 5px 1em 5px 1em;
     width: 100px;
     border-radius: 5px;
     border: 1px;
@@ -136,12 +158,11 @@ time {
     margin: 5px 10px 0px auto;
     background-color: #78fa67;
     border-color: #68ec57;
-
+    font-family: "HostGrotesk-Light";
     font-size: 0.85em;
     text-align: center;
     padding: 5px 1em 5px 1em;
     width: 100px;
-
     border-radius: 5px;
     border: 1px;
 }
@@ -150,12 +171,11 @@ time {
     margin: 5px 10px 0px auto;
     background-color: #e6f14f;
     border-color: #d8e244;
-
+    font-family: "HostGrotesk-Light";
     font-size: 0.85em;
     text-align: center;
     padding: 5px 1em 5px 1em;
     width: 100px;
-
     border-radius: 5px;
     border: 1px;
 }
