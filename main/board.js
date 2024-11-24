@@ -154,51 +154,60 @@ class Board {
         const board_object = document.createElement("div");
         const board_title = document.createElement("p");
         const task_list = document.createElement("ul");
-
-        const input = document.createElement("div");
-        const text_input = document.createElement("input");  //Título da task
+    
+        const input = document.createElement("div"); // Div principal
+        const inputs_group = document.createElement("div"); // Nova div para agrupar text_input, date_input e button
+        const text_input = document.createElement("input");  // Título da task
         const date_input = document.createElement("input");
         const button = document.createElement("button");
-        const information_input = document.createElement("input");  //Descrição da task
-
+        const information_input = document.createElement("input");  // Descrição da task
+    
         board_object.className = "board";
         board_object.id = `board${self.index}`;
-
+    
         board_title.className = "board_title";
         board_title.innerText = self.title;
-
+    
         task_list.className = "task_list";
-
+    
         input.className = "input";
-
+        inputs_group.className = "inputs_group"; // Classe para estilizar o novo grupo
+    
         text_input.type = "text";
         text_input.placeholder = "Título...";
         text_input.title = "Campo para inserir o nome da tarefa";
         text_input.className = "task_name_input";
-
+    
         date_input.type = "date";
         date_input.title = "Data final para realização da tarefa.";
         date_input.className = "task_date_input";
-
+    
         button.className = "task_button";
         button.title = "Adiciona a tarefa.";
         button.innerText = "+";
-
+    
         information_input.type = "text";
         information_input.title = "Campo para inserir uma descrição para a tarefa.";
-        information_input.placeholder = "Descrição da tarefa..."
+        information_input.placeholder = "Descrição da tarefa...";
         information_input.className = "task_information_input";
-
+    
+        // Adiciona os elementos ao DOM
         board_object.appendChild(board_title);
         board_object.appendChild(task_list);
         board_object.appendChild(input);
-        input.appendChild(text_input);
-        input.appendChild(date_input);
-        input.appendChild(button);
+    
+        // Adiciona inputs_group e information_input à div input
+        input.appendChild(inputs_group);
         input.appendChild(information_input);
-
-        button.addEventListener("click", this.createTaskElement, false);
-        button.board_index = self.index;
+        
+        // Adiciona inputs à nova div inputs_group
+        inputs_group.appendChild(text_input);
+        inputs_group.appendChild(date_input);
+        inputs_group.appendChild(button);
+    
+        // Adiciona evento ao botão
+        button.addEventListener("click", this.createTaskElement.bind(this), false);
+        button.board_index = this.index;
 
         return board_object;
     }
