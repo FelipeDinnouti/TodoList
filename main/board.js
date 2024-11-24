@@ -1,16 +1,16 @@
 class Board {
     constructor(title, index) {
-        self.title = title;
-        self.task_list = [];
-        self.index = index;
+        this.title = title;
+        this.task_list = [];
+        this.index = index;
     }
 
     getAsElement() {
-        return document.getElementById("board" + Number.toString(index));
+        return document.getElementById("board" + this.index);  // Usando this.index
     }
 
     createTaskElement(evt) {
-        let index = evt.currentTarget.board_index;
+        const index = evt.currentTarget.board_index;
 
         function getElementClassName(parent, target) {
             for (let i = 0; i < parent.childNodes.length; i++) {
@@ -56,6 +56,7 @@ class Board {
 
         // Configurando os elementos
         task_object.className = "task";
+        task_object.id = `task${Math.random().toString(36).substr(2, 9)}`; // ID único para cada tarefa
 
         checkbox.type = "checkbox";
         checkbox.className = "task_checkbox";
@@ -67,37 +68,30 @@ class Board {
         information_task.innerText = information;
         information_task.className = "information_task";
         
-
         time.className = "task_date";
         time.dateTime = date;
         time.innerText = new Date(date).toLocaleDateString("pt-BR", {
             timeZone: "UTC",
         }); // Exibe a data formatada
 
-
-        //Verificar se a tarefa estão feita
-
+        // Verificar se a tarefa está feita
         checkbox.addEventListener('change', function (ev) {
-            function getElementClassName(parent, target) {
-                for (var i = 0; i < parent.childNodes.length; i++) {
-                    if (parent.childNodes[i].className === target) {
-                        return parent.childNodes[i]
-                    }
-                }
-            }
-
             let parent = ev.currentTarget.parentElement;
             let task_description = getElementClassName(parent, "task_description");
 
             if (ev.currentTarget.checked) {
-                task_description.id = "strikethrough"
+                task_description.id = "strikethrough";
             } else {
-                task_description.id = ""
+                task_description.id = "";
+            }
+
+            // Mover para a board "Feito" quando a checkbox for marcada
+            if (ev.currentTarget.checked) {
+                const doneBoard = boards.find(board => board.title === "Feito");
+                doneBoard.getAsElement().querySelector(".task_list").appendChild(task_object);
             }
         });
 
-
-        
         delete_task.className = "bx bxs-trash alt";
         delete_task.id = "delete_task";
 
@@ -107,8 +101,6 @@ class Board {
             console.log("Tarefa deletada!");
             alert("Exclusão de tarefa concluída!");
         });
-
-
 
         // Montando a estrutura HTML
         task_object.appendChild(checkbox);
@@ -124,24 +116,24 @@ class Board {
 
         if (tarefaData < dataHoje) {
             console.log("tarefa atrasada");
-            time_tag.className = "tag_late"
+            time_tag.className = "tag_late";
             time_tag.innerText ="Atrasado";
             task_object.appendChild(time_tag);
         } else if (tarefaData === dataHoje) {
             console.log("tarefa para hoje");
-            time_tag.className = "tag_duetoday"
+            time_tag.className = "tag_duetoday";
             time_tag.innerText ="Para hoje";
             task_object.appendChild(time_tag);
         } else {
             console.log("tarefa dentro do prazo");
-            time_tag.className = "tag_ontime"
+            time_tag.className = "tag_ontime";
             time_tag.innerText ="No prazo";
             task_object.appendChild(time_tag);
         }
 
         // Adicionando a nova tarefa à lista
         task_list.appendChild(task_object);
-        self.task_list.push({
+        this.task_list.push({
             description,
             date,
             information,
@@ -149,64 +141,59 @@ class Board {
 
         console.log("Nova tarefa criada:", description, date, information);
         alert("Nova tarefa adicionada com sucesso!");
-
     }
 
     createBoardElement() {
         const board_object = document.createElement("div");
         const board_title = document.createElement("p");
         const task_list = document.createElement("ul");
-    
+
         const input = document.createElement("div"); // Div principal
-        const inputs_group = document.createElement("div"); // Nova div para agrupar text_input, date_input e button
+        const inputs_group = document.createElement("div"); // Div para agrupar inputs
         const text_input = document.createElement("input");  // Título da task
-        const date_input = document.createElement("input");
-        const button = document.createElement("button");
+        const date_input = document.createElement("input"); // Data da task
+        const button = document.createElement("button"); // Botão para adicionar a task
         const information_input = document.createElement("input");  // Descrição da task
-    
+
         board_object.className = "board";
-        board_object.id = `board${self.index}`;
-    
+        board_object.id = `board${this.index}`;
+
         board_title.className = "board_title";
-        board_title.innerText = self.title;
-    
+        board_title.innerText = this.title;
+
         task_list.className = "task_list";
-    
+
         input.className = "input";
-        inputs_group.className = "inputs_group"; // Classe para estilizar o novo grupo
-    
+        inputs_group.className = "inputs_group";
+
         text_input.type = "text";
         text_input.placeholder = "Título...";
-        text_input.title = "Campo para inserir o nome da tarefa";
         text_input.className = "task_name_input";
-    
+
         date_input.type = "date";
-        date_input.title = "Data final para realização da tarefa.";
         date_input.className = "task_date_input";
-    
+
         button.className = "task_button";
-        button.title = "Adiciona a tarefa.";
         button.innerText = "+";
-    
+
         information_input.type = "text";
-        information_input.title = "Campo para inserir uma descrição para a tarefa.";
         information_input.placeholder = "Descrição da tarefa...";
         information_input.className = "task_information_input";
-    
+
         // Adiciona os elementos ao DOM
         board_object.appendChild(board_title);
         board_object.appendChild(task_list);
         board_object.appendChild(input);
-    
+
         // Adiciona inputs_group e information_input à div input
         input.appendChild(inputs_group);
         input.appendChild(information_input);
-        
-        // Adiciona inputs à nova div inputs_group
+
+        // Adiciona os inputs à div inputs_group
         inputs_group.appendChild(text_input);
         inputs_group.appendChild(date_input);
         inputs_group.appendChild(button);
-    
+
         // Adiciona evento ao botão
         button.addEventListener("click", this.createTaskElement.bind(this), false);
         button.board_index = this.index;
