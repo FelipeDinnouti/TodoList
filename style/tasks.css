@@ -33,6 +33,7 @@
     display: inline-block;
     font-family: "HostGrotesk-Light";
     margin-bottom: 0px;
+    font-weight: 600;
 }
 
 .task_checkbox {
@@ -82,7 +83,12 @@
 
 
 .input {
+    display:block;
+}
+
+.inputs_group{
     display: flex;
+    margin-bottom: 2%;
 }
 
 .task_button {
@@ -118,10 +124,12 @@
 
 .task_information_input {
     background-color: #c7d5f0;
+    color: #000000;
     border: none;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 10px;
     font-family: "HostGrotesk-Light";
     height: 40px;
+    width: 100%;
 }
 
 time {
