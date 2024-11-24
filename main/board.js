@@ -24,10 +24,12 @@ class Board {
         const task_list = getElementClassName(board_object, "task_list");
 
         let input = getElementClassName(board_object, "input");
-        let task_name_input = getElementClassName(input, "task_name_input");
-        let task_date_input = getElementClassName(input, "task_date_input");
-        let task_information_input = getElementClassName(input, "task_information_input");
+        let inputs_group = getElementClassName(input, "inputs_group");
 
+        // Localiza os inputs dentro de inputs_group
+        let task_name_input = getElementClassName(inputs_group, "task_name_input");
+        let task_date_input = getElementClassName(inputs_group, "task_date_input");
+        let task_information_input = getElementClassName(input, "task_information_input");
 
         let description = task_name_input.value;
         let date = task_date_input.value;
