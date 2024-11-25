@@ -99,7 +99,6 @@ class Board {
         delete_task.addEventListener("click", () => {
             task_object.remove(); // Remove a tarefa do DOM
             console.log("Tarefa deletada!");
-            alert("Exclusão de tarefa concluída!");
         });
 
         // Montando a estrutura HTML
@@ -140,7 +139,6 @@ class Board {
         });
 
         console.log("Nova tarefa criada:", description, date, information);
-        alert("Nova tarefa adicionada com sucesso!");
     }
 
     createBoardElement() {

@@ -119,7 +119,7 @@
     background-color: #c7d5f0;
     font-family: "HostGrotesk-Light";
     border: none;
-    height: 40px;
+    height: 42px;
 }
 
 .task_information_input {
@@ -129,7 +129,8 @@
     border-radius: 10px;
     font-family: "HostGrotesk-Light";
     height: 42px;
-    width: 100%;
+    width: 93%;
+    padding-left: 25px;
 }
 
 time {
