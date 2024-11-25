@@ -57,11 +57,11 @@
 }
 
 .task:nth-child(even) {
-    background-color: #bed8ff;
+    background-color: #e1dffc;
 }
 
 .task:nth-child(odd) {
-    background-color: #ffffff;
+    background-color: var(--background-color);
 }
 
 /* Delete task button */
@@ -93,7 +93,7 @@
 
 .task_button {
     float: center;
-    height: 40px;
+    height: 42px;
     width: 20%;
     margin-left: 0px;
     border-radius: 0px 10px 10px 0px;
@@ -109,7 +109,7 @@
     font-family: "HostGrotesk-Light";
     border-radius: 10px 0px 0px 10px;
     background-color: #c7d5f0;
-    height: 40px;
+    height: 42px;
     border: 0px;
     width: 65%;
     margin-right: 0px;
@@ -128,7 +128,7 @@
     border: none;
     border-radius: 10px;
     font-family: "HostGrotesk-Light";
-    height: 40px;
+    height: 42px;
     width: 100%;
 }
 
@@ -150,7 +150,7 @@ time {
 
 .tag_late {
     margin: 5px 10px 0px auto;
-    background-color: #f1514f;
+    background-color: #ED5555;
     border-color: #ca2e32;
     font-family: "HostGrotesk-Light";
     font-size: 0.85em;
@@ -163,8 +163,8 @@ time {
 
 .tag_ontime {
     margin: 5px 10px 0px auto;
-    background-color: #78fa67;
-    border-color: #68ec57;
+    background-color: #6ee48e;
+    border-color: #6ee48e;
     font-family: "HostGrotesk-Light";
     font-size: 0.85em;
     text-align: center;
@@ -176,7 +176,7 @@ time {
 
 .tag_duetoday {
     margin: 5px 10px 0px auto;
-    background-color: #e6f14f;
+    background-color: #eee174;
     border-color: #d8e244;
     font-family: "HostGrotesk-Light";
     font-size: 0.85em;
