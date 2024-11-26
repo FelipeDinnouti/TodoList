@@ -24,10 +24,12 @@
     transition: transform 0.5s ease-in-out;
 }
 
+/*
 .task:hover {
     transform: scale(1.035);
     transition: transform 0.2s ease-in-out;
 }
+*/ /*quebra o drag*/
 
 .task_description {
     display: inline-block;
@@ -120,6 +122,8 @@
     font-family: "HostGrotesk-Light";
     border: none;
     height: 42px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 .task_information_input {

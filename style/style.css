@@ -25,6 +25,11 @@ body {
     text-align: center;
 }
 
+#wrapper {
+    margin: 0px auto;
+    display: inline-block;
+}
+
 h1 {
     font-family: "HostGrotesk-Medium";
     font-weight: 400;

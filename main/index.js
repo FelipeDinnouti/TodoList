@@ -1,6 +1,6 @@
-const board_list = document.getElementById("board_list");
-
+const board_list = document.getElementById("wrapper");
 let boards = []; //Uma board é um conjunto de tasks
+
 
 // Default Boards
 

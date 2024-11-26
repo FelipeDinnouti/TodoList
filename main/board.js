@@ -138,6 +138,9 @@ class Board {
             information,
         });
 
+        // Draggin
+        makeDragable(task_object);
+        
         console.log("Nova tarefa criada:", description, date, information);
     }
 
