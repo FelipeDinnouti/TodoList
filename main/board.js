@@ -21,6 +21,7 @@ class Board {
         }
 
         const board_object = document.getElementById(`board${index}`);
+        const task_list_element = getElementClassName(board_object, "task_list");
         const task_list = getElementClassName(board_object, "task_list");
 
         let input = getElementClassName(board_object, "input");
@@ -130,13 +131,22 @@ class Board {
             task_object.appendChild(time_tag);
         }
 
-        // Adicionando a nova tarefa à lista
-        task_list.appendChild(task_object);
+       // Adiciona a tarefa ao array
         this.task_list.push({
             description,
             date,
             information,
+            element: task_object, // Referência ao elemento DOM
         });
+
+        // Ordena o array por data
+        this.task_list.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        task_list_element.innerHTML = ""; // Remove apenas as tarefas
+        this.task_list.forEach(task => {
+            task_list_element.appendChild(task.element); // Adiciona novamente as tarefas ordenadas
+        });
+
 
         console.log("Nova tarefa criada:", description, date, information);
     }
