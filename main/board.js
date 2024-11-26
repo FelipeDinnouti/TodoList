@@ -86,18 +86,18 @@ class Board {
                 task_description.id = "";
             }
 
-            // Mover para a board "Feito" quando a checkbox for marcada
-            if (ev.currentTarget.checked) {
-                const doneBoard = boards.find(board => board.title === "Feito");
-                doneBoard.getAsElement().querySelector(".task_list").appendChild(task_object);
-            }
+            // Mover para a board "Feito" quando a checkbox for marcada - block - japones
+            //if (ev.currentTarget.checked) {
+            //    const doneBoard = boards.find(board => board.title === "Feito");
+            //    doneBoard.getAsElement().querySelector(".task_list").appendChild(task_object);
+            //}
         });
 
         delete_task.className = "bx bxs-trash alt";
         delete_task.id = "delete_task";
 
         // Evento de exclusão
-        delete_task.addEventListener("click", () => {
+        delete_task.addEventListener("mousedown", () => {
             task_object.remove(); // Remove a tarefa do DOM
             console.log("Tarefa deletada!");
         });
@@ -131,25 +131,18 @@ class Board {
             task_object.appendChild(time_tag);
         }
 
+        task_list_element.appendChild(task_object);
+
        // Adiciona a tarefa ao array
+        var task_information_object = new TaskInformation(description, date, information, task_object);
+
         this.task_list.push({
-            description,
-            date,
-            information,
-            element: task_object, // Referência ao elemento DOM
+            task_information_object
         });
+        task_object.task_information_object = task_information_object
 
         // Draggin
-        makeDragable(task_object);
-        
-        // Ordena o array por data
-        this.task_list.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-        task_list_element.innerHTML = ""; // Remove apenas as tarefas
-        this.task_list.forEach(task => {
-            task_list_element.appendChild(task.element); // Adiciona novamente as tarefas ordenadas
-        });
-
+        makeDragable(board_object, task_object);
 
         console.log("Nova tarefa criada:", description, date, information);
     }

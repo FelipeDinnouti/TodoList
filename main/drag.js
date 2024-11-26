@@ -1,7 +1,7 @@
 // --- Receba o drag and drop
 
 // Faz um elemento ser arrastável
-function makeDragable(element) {
+function makeDragable(board, element) {
     console.log(element)
 
     let x_offset = 0, y_offset = 0;
@@ -10,7 +10,7 @@ function makeDragable(element) {
     element.onmousedown = startDragging;
 
     function startDragging(e) {
-        e.preventDefault();
+        //e.preventDefault();
 
         original_rect = element.getBoundingClientRect();
         
@@ -19,13 +19,10 @@ function makeDragable(element) {
 
         element.style.top = (e.clientY - y_offset) + "px";
         element.style.left = (e.clientX - x_offset) + "px";
-        element.style.zIndex = "999";
 
         // Pra poder mexer na posição dele como eu quiserr
         element.style.position = "absolute";
         
-        console.log(original_rect)
-
         // Quando o botao do mouse sobe 
         document.onmouseup = stopDragging;
         // Chama sempre que o cursor muda de lugar
@@ -43,9 +40,8 @@ function makeDragable(element) {
     function stopDragging(e) {
         const board_list = document.getElementById("wrapper");
 
-        // TODO de duas uma: devolve ele da onde veio, ou bota ele na lista que ele caiu (consigo fazer isso usando achando o offsetTop left height e width, facinho de fazer aabb)
-
-        // reusando codigo copiando assim, nao faça isso
+        // TODO de duas uma: devolve ele da onde veio, ou bota ele na lista que ele caiu (resolvendo usando aabb mais basico)
+        // reusando codigo copiando assim, nao faça isso (mas ta acabando o tempo)
         function getElementClassName(parent, target) {
             for (let i = 0; i < parent.childNodes.length; i++) {
                 if (parent.childNodes[i].className === target) {
@@ -55,8 +51,9 @@ function makeDragable(element) {
         }
 
         var collider  = getCollision(e.clientX, e.clientY, board_list.children);
-        if ((collider != null)) {// NÂO sendo arrastado pra lugar nenhum
+        if ((collider != null) && (collider != board)) {// NÂO sendo arrastado pra lugar nenhum
             getElementClassName(collider, "task_list").appendChild(element);
+            board = collider // atualiza a board
         }
         // stop moving when mouse button is released:
         element.style.position = "static";
