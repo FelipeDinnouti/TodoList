@@ -2,21 +2,21 @@ const board_list = document.getElementById("wrapper");
 
 // Default Boards
 
-var todo_board = new Board("A Fazer", 0);
+let current_board_index // Placeholder but will work for now (inneficient for higher counts of boards)
 
-boards.push(todo_board);
-board_list.appendChild(todo_board.createBoardElement());
+function createBoard(name) {
+  let board = new Board(name, boardElementList.length);
+  boardInformationList.push(board); // Adiciona na lista de boards
 
-var doing_board = new Board("Fazendo", 1);
+  let boardElement = board.createBoardElement()
+  boardElementList.push(boardElement); // Adiciona a lista 
 
-boards.push(doing_board);
-board_list.appendChild(doing_board.createBoardElement());
+  board_list.appendChild(boardElement) // Adiciona ao HTML
+}
 
-var done_board = new Board("Feito", 2);
-
-boards.push(done_board);
-board_list.appendChild(done_board.createBoardElement());
-
+createBoard("A Fazer");
+createBoard("Fazendo");
+createBoard("Feito");
 
 // Completando tasks
 const checkboxes = document.querySelectorAll(".task_checkbox");
