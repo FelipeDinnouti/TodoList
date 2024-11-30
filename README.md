@@ -1,3 +1,7 @@
+## Simplesmente uma Todo List
+
+Originalmente um projeto de escola que a gente fez para apresentar na Venturus.
+
 ## Lista de Features:
 - Adicionar Tarefas
 - Excluir Tarefas
